@@ -130,6 +130,116 @@ defeitos = [
     "Braço enfaixado", "Cicatriz que atravessa o olho", "Rosto franzido permanentemente", "Super Espinhas"
 ]
 
+def definir_idade(raça):
+    if raça == "Elfo":
+        idade = random.randint(100, 700)
+    elif raça == "Anão":
+        idade = random.randint(50, 350)
+    elif raça == "Humano":
+        idade = random.randint(15, 80)
+    elif raça == "Halfling":
+        idade = random.randint(20, 150)
+    elif raça == "Dragonborn":
+        idade = random.randint(15, 80)
+    elif raça == "Tiefling":
+        idade = random.randint(15, 80)
+    elif raça == "Gnomo":
+        idade = random.randint(40, 500)
+    elif raça == "Orc":
+        idade = random.randint(15, 50)
+    elif raça == "Aarakocra":
+        idade = random.randint(5, 30)
+    elif raça == "Aasimar":
+        idade = random.randint(15, 100)
+    elif raça == "Genasi":
+        idade = random.randint(15, 120)
+    elif raça == "Goliath":
+        idade = random.randint(18, 80)
+    elif raça == "Tabaxi":
+        idade = random.randint(15, 80)
+    elif raça == "Tritão":
+        idade = random.randint(20, 200)
+    elif raça == "Kenku":
+        idade = random.randint(8, 60)
+    elif raça == "Firbolg":
+        idade = random.randint(30, 500)
+    elif raça == "Goblin":
+        idade = random.randint(8, 60)
+    elif raça == "Hobgoblin":
+        idade = random.randint(18, 80)
+    elif raça == "Kobold":
+        idade = random.randint(10, 120)
+    elif raça == "Bugbear":
+        idade = random.randint(16, 75)
+    elif raça == "Yuan-ti Pureblood":
+        idade = random.randint(15, 80)
+    elif raça == "Warforged":
+        idade = random.randint(15, 1000)  # Valor simbólico
+    elif raça == "Shifter":
+        idade = random.randint(15, 80)
+    elif raça == "Changeling":
+        idade = random.randint(5, 80)
+    elif raça == "Kalastar":
+        idade = random.randint(20, 100)
+    elif raça == "Loxodon":
+        idade = random.randint(50, 450)
+    elif raça == "Simic Hybrid":
+        idade = random.randint(15, 80)
+    elif raça == "Vedalken":
+        idade = random.randint(40, 500)
+    elif raça == "Centauro":
+        idade = random.randint(20, 100)
+    elif raça == "Minotauro":
+        idade = random.randint(20, 100)
+    elif raça == "Leonin":
+        idade = random.randint(20, 100)
+    elif raça == "Satyr":
+        idade = random.randint(5, 80)
+    elif raça == "Harengon":
+        idade = random.randint(15, 80)
+    elif raça == "Owlin":
+        idade = random.randint(15, 100)
+    else:
+        idade = random.randint(15, 80)
+
+    return idade
+
+def gerar_historia_npc():
+    # Opções para cada parte da história
+    comecos = [
+        "Nasceu em uma aldeia remota cercada por florestas densas.",
+        "Foi criado por uma guilda de ladrões após ser abandonado.",
+        "Era um ferreiro talentoso conhecido por suas obras excepcionais.",
+        "Cresceu em uma corte real como servo de nobres.",
+        "Descobriu poderes mágicos ainda na juventude."
+    ]
+
+    meios = [
+        "Decidiu se aventurar em busca de respostas sobre seu passado.",
+        "Foi traído por um amigo e agora busca vingança.",
+        "Envolveu-se em um conflito entre duas facções poderosas.",
+        "Encontrou um artefato mágico que mudou sua vida para sempre.",
+        "Unificou um grupo de aventureiros para enfrentar uma ameaça comum."
+    ]
+
+    fins = [
+        "Sacrificou-se para proteger sua vila de uma invasão.",
+        "Ascendeu ao status de herói após salvar o reino.",
+        "Tornou-se um líder respeitado de sua guilda.",
+        "Desapareceu misteriosamente enquanto explorava uma ruína antiga.",
+        "Viveu seus dias em paz, compartilhando suas histórias com os mais jovens."
+    ]
+
+    # Escolha aleatória de cada parte
+    comeco = random.choice(comecos)
+    meio = random.choice(meios)
+    fim = random.choice(fins)
+
+    historia = f"{comeco}. {meio}.{fim}"
+    return historia
+
+
+
 def gerar_atributos_npc(genero):
     if genero == "Masculino":
         nomeNPC = random.choice(nomes_masculinos)
@@ -140,11 +250,9 @@ def gerar_atributos_npc(genero):
     alinhamento = random.choice(tracos_alinhamento)
     traço = random.choice(personalidade)
     profissao = random.choice(profissoes)
-    if raça == "Elfo":
-        idade = random.randint(100, 700)
-    else:
-        idade = random.randint(1, 130)
+    idade = definir_idade(raça)
     defeito = random.choice(defeitos)
+    #background = gerar_historia_npc()
 
 
     npc = f"Nome: {nomeNPC}\nRaça: {raça}\nIdade: {idade}\nPersonalidade: {traço}\nDefeitos: {defeito}\nAlinhamento: {alinhamento}\n\nProfissão: {profissao}"
@@ -233,7 +341,7 @@ def exibir_npc(npc, genero):
         nome_arquivo = entrada_arquivo.get().strip()
         if nome_arquivo:
             with open(f"{nome_arquivo}.txt", "w", encoding="utf-8") as arquivo:
-                arquivo.write(label_npc.cget("text") + "\n\n")  # Salva os dados atuais do NPC
+                arquivo.write(label_npc.cget("text") + "\n\n" +"Background: ")  # Salva os dados atuais do NPC
             tk.messagebox.showinfo("Salvo", f"NPC salvo em: {nome_arquivo}.txt")
         else:
             tk.messagebox.showwarning("Erro", "Por favor, insira um nome válido para o arquivo.")

@@ -1,0 +1,10 @@
+Nome: Absalom
+Raça: Bugbear
+Idade: 25
+Personalidade: Manipulador
+Defeitos: Respiração ofegante
+Alinhamento: Neutro e Mau
+
+Profissão: Agricultor
+
+Background: 
