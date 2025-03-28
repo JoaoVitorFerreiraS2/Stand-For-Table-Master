@@ -5,6 +5,7 @@ Este projeto é um conjunto de ferramentas para mestres de RPGs de mesa, desenvo
 ## 📌 Funcionalidades no momento
 - Gerador de NPC's
 - Calculador de CR
+- Conversor de moedas
 
 ## 🛠️ Tecnologias Utilizadas
 - **Python 3**
