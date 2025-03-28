@@ -3,7 +3,8 @@ from tkinter import ttk, font, messagebox
 
 from content.gerador_NPC.funcoes_gerador_NPC import gerar_npc
 from content.balanceamentoCR.balanceamento_CR import balanceamento_CR
-from content.economia_contador.economia_contador import criar_janela
+from content.economia_contador.economia_contador import criar_janela_moeda
+from content.criador_de_emblema.criador_de_emblema import criar_janela_emblema
 
 WIDTH_PRINCIPAL = 850
 HEIGHT_PRINCIPAL = 650
@@ -57,13 +58,24 @@ btn_balanceamento_CR.pack(pady=10)
 conversão_de_moeda = tk.Button(
     frame_principal, 
     text="Conversão de Moeda", 
-    command=lambda: criar_janela(root), 
+    command=lambda: criar_janela_moeda(root), 
     bg="#8B0000",  # Vermelho escuro para temática RPG
     fg="white", 
     font=("Garamond", 14, "bold"),
     relief="raised"   
 )
 conversão_de_moeda.pack(pady=10)
+
+criador_de_emblema = tk.Button(
+    frame_principal, 
+    text="Criador de Emblema", 
+    command=lambda: criar_janela_emblema(root), 
+    bg="#8B0000",  # Vermelho escuro para temática RPG
+    fg="white", 
+    font=("Garamond", 14, "bold"),
+    relief="raised"   
+)
+criador_de_emblema.pack(pady=10)
 
 # Oração SAGRADA, NUNCA APAGUE OU SUA MESA SERÁ AZARADA PARA SEMPRE
 rodape = tk.Label(

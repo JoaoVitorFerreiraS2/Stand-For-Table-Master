@@ -1,6 +1,6 @@
 import tkinter as tk
 
-def criar_janela(root):
+def criar_janela_moeda(root):
     def calcular_valor():
         try:
             # Recuperando os valores da entrada
