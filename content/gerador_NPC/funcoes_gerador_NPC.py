@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, font, messagebox
 import random
 
-from content.gerador_NPC.content import nomes_masculinos, nomes_femininos, raças, tracos_alinhamento, personalidade, profissoes, defeitos, comecos, meios, fins
+from content.gerador_NPC.content import nomes_masculinos, nomes_femininos, raças, tracos_alinhamento, personalidade, profissoes, defeitos, comecos, meios, fins, organizacoes
 
 
 def definir_idade(raça):
@@ -100,13 +100,16 @@ def gerar_atributos_npc(genero):
     raça = random.choice(raças)
     alinhamento = random.choice(tracos_alinhamento)
     traço = random.choice(personalidade)
-    profissao = random.choice(profissoes)
     idade = definir_idade(raça)
     defeito = random.choice(defeitos)
+
+    profissao = random.choice(profissoes)
+    organizacao = random.choice(organizacoes)
+    
     background = gerar_historia_npc(profissao)
 
 
-    npc = f"Nome: {nomeNPC}\nRaça: {raça}\nIdade: {idade}\nPersonalidade: {traço}\nDefeitos: {defeito}\nAlinhamento: {alinhamento}\n\nProfissão: {profissao}\n\nBackground: {background}"
+    npc = f"Nome: {nomeNPC}\nRaça: {raça}\nIdade: {idade}\nPersonalidade: {traço}\nDefeitos: {defeito}\nAlinhamento: {alinhamento}\n\nProfissão: {profissao}\nOrganização: {organizacao}\n\nBackground: {background}"
     return npc
 
 # Função para gerar e exibir o NPC
@@ -151,7 +154,7 @@ def gerar_npc(root):
 def exibir_npc(root ,npc, genero):
     janela_npc = tk.Toplevel(root)
     janela_npc.title("Ficha do Aventureiro")
-    janela_npc.geometry("500x650")
+    janela_npc.geometry("500x700")
     janela_npc.configure(bg="#D7B377")
 
     titulo_npc = tk.Label(
