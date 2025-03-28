@@ -48,6 +48,15 @@ Este projeto é um conjunto de ferramentas para mestres de RPGs de mesa, desenvo
    ```
 5. Abra um **Pull Request**
 
+## ✅ Funcionalidades Futuras
+- [ ] Alterar raça, nome, alinhamento, defeitos, profissões e etc ainda em tela
+- [ ] Gerador de monstros
+- [ ] Sistema de Geração de Mapas Dinâmicos
+- [ ] Gerador de Encontros Aleatórios
+- [ ] Gerador de História e Missões
+- [ ] Informar onde quer salvar os arquivos
+
+
 ---
 Desenvolvido por João Vitor Ferreira (https://github.com/JoaoVitorFerreiraS2) 💡
 
