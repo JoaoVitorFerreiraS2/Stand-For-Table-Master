@@ -58,7 +58,7 @@ Este projeto é um conjunto de ferramentas para mestres de RPGs de mesa, desenvo
 - [ ] Informar onde quer salvar os arquivos
 
 
-[Baixar Stand For Table Master (.zip)](https://github.com/JoaoVitorFerreiraS2/Stand-For-Table-Master/raw/main/Suporte Mestre 1.0.0.zip)
+[Baixar Stand For Table Master (.zip)](https://github.com/JoaoVitorFerreiraS2/Stand-For-Table-Master/Suporte Mestre 1.0.0.zip)
 
 
 ---
