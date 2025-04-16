@@ -1,6 +1,9 @@
 import tkinter as tk
 from PIL import Image, ImageDraw, ImageTk
 import random
+import os
+
+
 
 def criar_emblema():
     """Cria um emblema estilizado com formatos e cores aleatórios."""
@@ -115,6 +118,8 @@ def exibir_emblema(root, label_imagem):
     label_imagem.config(image=imagem_tk)
     label_imagem.imagem_tk = imagem_tk  
 
+
+
 def criar_janela_emblema(root):
     """Cria a interface gráfica para interagir com o criador de emblemas."""
     janela_emblema = tk.Toplevel(root)
@@ -122,11 +127,24 @@ def criar_janela_emblema(root):
     janela_emblema.geometry("700x600")
 
     tk.Label(janela_emblema, text="Criador de Emblemas", font=("Arial", 16, "bold")).pack(pady=10)
+    tk.Label(janela_emblema, text="Ainda em teste", font=("Arial", 16, "bold")).pack(pady=10)
+
+    #Ainda não funcionando
+    btn_salvar = tk.Button(
+        janela_emblema, text="Salvar Emblema", command=None ,
+        bg="#008CBA", fg="white", font=("Garamond", 12, "bold"), relief="raised"
+    )
+    btn_salvar.pack(pady=10)
+
+    btn_fechar = tk.Button(
+        janela_emblema, text="Fechar", command=janela_emblema.destroy,
+        bg="#8B0000", fg="white", font=("Garamond", 12, "bold"), relief="raised"
+    )
+    btn_fechar.pack(pady=10)
+
+    tk.Button(janela_emblema, text="Gerar Emblema", font=("Arial", 12), 
+              command=lambda: exibir_emblema(janela_emblema, label_imagem), bg="#FFD700").pack(pady=20)
     
     label_imagem = tk.Label(janela_emblema)
     label_imagem.pack(pady=20)
     
-    tk.Button(janela_emblema, text="Gerar Emblema", font=("Arial", 12), 
-              command=lambda: exibir_emblema(janela_emblema, label_imagem), bg="#FFD700").pack(pady=20)
-
-#Está faltando a droga do botão salvar, esqueci :(

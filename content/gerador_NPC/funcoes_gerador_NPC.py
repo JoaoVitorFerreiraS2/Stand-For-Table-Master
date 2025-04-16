@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, font, messagebox
 import random
+import customtkinter as ctk
 
 from content.gerador_NPC.content import nomes_masculinos, nomes_femininos, raças, tracos_alinhamento, personalidade, profissoes, defeitos, comecos, meios, fins, organizacoes
 
@@ -114,39 +115,51 @@ def gerar_atributos_npc(genero):
 
 # Função para gerar e exibir o NPC
 def gerar_npc(root):
-    janela_genero = tk.Toplevel(root)
+    janela_genero = ctk.CTkToplevel(root)
     janela_genero.title("Escolha o Gênero do NPC")
     janela_genero.geometry("350x200")
-    janela_genero.configure(bg="#D7B377")  
+    janela_genero.configure(fg_color="#D7B377")  
+    janela_genero.attributes("-topmost", True)  # Manter a janela no topo
+    janela_genero.iconbitmap('icon/shield.ico')  # Definindo o ícone da janela
 
     def resposta_genero(genero):
         janela_genero.destroy()  # Fecha a janela de seleção
         npc = gerar_atributos_npc(genero)  # Gera os atributos com base no gênero
         exibir_npc(root, npc, genero)  # Exibe o NPC e passa o gênero para regeneração
 
-    label_pergunta = tk.Label(
+    label_pergunta = ctk.CTkLabel(
         janela_genero, 
         text="Escolha o gênero do NPC:", 
-        font=("Garamond", 16, "bold"), 
-        bg="#D7B377", 
-        fg="#3E2723"
+        font=ctk.CTkFont(family="Garamond", size=20, weight="bold"),
+        bg_color="#D7B377",
+        text_color="black"
+
+
     )
     label_pergunta.pack(pady=15)
 
     # Botões para seleção de gênero
-    btn_masculino = tk.Button(
+    btn_masculino = ctk.CTkButton(
         janela_genero, 
         text="Masculino", 
         command=lambda: resposta_genero("Masculino"), 
-        bg="#4CAF50", fg="white", font=("Garamond", 14, "bold"), relief="raised"
+        width=35,
+        fg_color="blue", 
+        font=ctk.CTkFont("Garamond", 16, "bold"), 
+        hover_color="#00008B",  # Cor ao passar o mouse
+        text_color="white"
     )
     btn_masculino.pack(side="left", padx=30, pady=20)
 
-    btn_feminino = tk.Button(
+    btn_feminino = ctk.CTkButton(
         janela_genero, 
         text="Feminino", 
         command=lambda: resposta_genero("Feminino"), 
-        bg="#FF6347", fg="white", font=("Garamond", 14, "bold"), relief="raised"
+        width=35,
+        fg_color="pink", 
+        font=ctk.CTkFont("Garamond", 16, "bold"), 
+        hover_color="#FF1493",  # Cor ao passar o mouse
+        text_color="black"
     )
     btn_feminino.pack(side="right", padx=30, pady=20)
 
