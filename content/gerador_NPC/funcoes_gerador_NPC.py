@@ -6,6 +6,10 @@ import customtkinter as ctk
 from content.gerador_NPC.content import nomes_masculinos, nomes_femininos, raças, tracos_alinhamento, personalidade, profissoes, defeitos, comecos, meios, fins, organizacoes
 
 
+WIDTH_BUTTON = 100
+HEIGHT_BUTTON = 50
+
+
 def definir_idade(raça):
     if raça == "Elfo":
         idade = random.randint(100, 700)
@@ -90,8 +94,6 @@ def gerar_historia_npc(profissao):
     historia = f"{comeco}. {meio}. {fim}"
     return historia
 
-
-
 def gerar_atributos_npc(genero):
     if genero == "Masculino":
         nomeNPC = random.choice(nomes_masculinos)
@@ -143,11 +145,12 @@ def gerar_npc(root):
         janela_genero, 
         text="Masculino", 
         command=lambda: resposta_genero("Masculino"), 
-        width=35,
+        width=WIDTH_BUTTON,
+        height=HEIGHT_BUTTON,
         fg_color="blue", 
         font=ctk.CTkFont("Garamond", 16, "bold"), 
         hover_color="#00008B",  # Cor ao passar o mouse
-        text_color="white"
+        text_color="white",
     )
     btn_masculino.pack(side="left", padx=30, pady=20)
 
@@ -155,7 +158,8 @@ def gerar_npc(root):
         janela_genero, 
         text="Feminino", 
         command=lambda: resposta_genero("Feminino"), 
-        width=35,
+        width=WIDTH_BUTTON,
+        height=HEIGHT_BUTTON,
         fg_color="pink", 
         font=ctk.CTkFont("Garamond", 16, "bold"), 
         hover_color="#FF1493",  # Cor ao passar o mouse
@@ -165,41 +169,33 @@ def gerar_npc(root):
 
 # Função para exibir o NPC gerado
 def exibir_npc(root ,npc, genero):
-    janela_npc = tk.Toplevel(root)
+    janela_npc = ctk.CTkToplevel(root)
     janela_npc.title("Ficha do Aventureiro")
     janela_npc.geometry("500x700")
-    janela_npc.configure(bg="#D7B377")
+    janela_npc.configure(fg_color="#D7B377")
 
-    titulo_npc = tk.Label(
-        janela_npc, text="-- Ficha do NPC --", font=("Garamond", 18, "bold"),
-        bg="#D7B377", fg="#3E2723"
+    titulo_npc = ctk.CTkLabel(
+        janela_npc, text="-- Background do NPC --", font=ctk.CTkFont(family="Garamond", size=21, weight="bold"),
+        fg_color="#D7B377"
     )
     titulo_npc.pack(pady=10)
 
     # Moldura para exibir os atributos do NPC
-    frame_texto = tk.Frame(janela_npc, bg="#D7B377")
+    frame_texto = ctk.CTkFrame(janela_npc, bg_color="#D7B377", fg_color="#D7B377")
     frame_texto.pack(pady=10, padx=20)
 
-    label_npc = tk.Label(
-        frame_texto, text=npc, font=("Garamond", 14), justify="left",
-        bg="#FAE5C3", fg="black", relief="groove", padx=10, pady=10, wraplength=400
+    label_npc = ctk.CTkLabel(
+        frame_texto, text=npc, font=ctk.CTkFont(family="Garamond", size=18),
+        bg_color="#FAE5C3", corner_radius=10, fg_color="#D7B377", text_color='white' ,padx=10, pady=10, wraplength=400, justify="left"
     )
     label_npc.pack()
 
-    frame_salvar = tk.Frame(janela_npc, bg="#D7B377")
+    frame_salvar = ctk.CTkFrame(janela_npc, bg_color="#D7B377")
     frame_salvar.pack(pady=10)
-    
-    
-
-    entrada_arquivo_indicacao = tk.Label(
-        janela_npc, text="Digite o nome do arquivo", font=("Garamond", 12, "bold"),
-        bg="#D7B377", fg="#3E2723"
-    )
-    entrada_arquivo_indicacao.pack(pady=10)
 
 
-    entrada_arquivo = tk.Entry(
-        frame_salvar, font=("Garamond", 12), width=20, relief="sunken", 
+    entrada_arquivo = ctk.CTkEntry(
+        frame_salvar, font=ctk.CTkFont(family="Garamond", size=12), width=300, placeholder_text="Nome do arquivo", 
     )
     entrada_arquivo.pack(side="left", padx=5)
 
@@ -216,25 +212,34 @@ def exibir_npc(root ,npc, genero):
     # Função para regenerar os atributos do NPC
     def gerar_novamente():
         novo_npc = gerar_atributos_npc(genero)  # Regenera com base no gênero
-        label_npc.config(text=novo_npc)  # Atualiza o texto no Label
+        label_npc.configure(text=novo_npc)  # Atualiza o texto no Label
 
     # Botão para gerar o NPC novamente
-    btn_gerar_novamente = tk.Button(
+    btn_gerar_novamente = ctk.CTkButton(
         janela_npc, text="Gerar de Novo", command=gerar_novamente,
-        bg="#FFA500", fg="white", font=("Garamond", 12, "bold"), relief="raised"
+        width=WIDTH_BUTTON,
+        height=HEIGHT_BUTTON,
+        fg_color="red", font=ctk.CTkFont(family="Garamond", size=12, weight="bold"),
+        hover_color="#8B0000", corner_radius=10  # Cor ao passar o mouse
     )
     btn_gerar_novamente.pack(pady=10)
 
     # Botão para salvar o NPC
-    btn_salvar = tk.Button(
+    btn_salvar = ctk.CTkButton(
         janela_npc, text="Salvar NPC", command=salvar_npc,
-        bg="#008CBA", fg="white", font=("Garamond", 12, "bold"), relief="raised"
+        width=WIDTH_BUTTON,
+        height=HEIGHT_BUTTON,
+        fg_color="yellow", font=ctk.CTkFont(family="Garamond", size=12, weight="bold"),
+        hover_color="#DAA520", text_color="black", corner_radius=10  # Cor ao passar o mouse
     )
     btn_salvar.pack(pady=10)
 
     # Botão para fechar a janela
-    btn_fechar = tk.Button(
+    btn_fechar = ctk.CTkButton(
         janela_npc, text="Fechar", command=janela_npc.destroy,
-        bg="#8B0000", fg="white", font=("Garamond", 12, "bold"), relief="raised"
+        width=WIDTH_BUTTON,
+        height=HEIGHT_BUTTON,
+        font=ctk.CTkFont(family="Garamond", size=12, weight="bold"), 
+        corner_radius=10, text_color="white", fg_color="black", hover_color="#1C1C1C" 
     )
     btn_fechar.pack(pady=10)
