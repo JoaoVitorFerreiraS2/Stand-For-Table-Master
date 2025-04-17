@@ -8,6 +8,7 @@ from content.economia_contador.economia_contador import criar_janela_moeda
 from content.criador_de_emblema.criador_de_emblema import criar_janela_emblema
 from content.anotacoes_Mestre.anotacoes_master import criar_janela_anotacoes
 from content.criador_token.criador_token import criar_janela_criador_token
+from content.icon.ico import ICO_PATH_PRINCIPAL
 
 
 WIDTH_PRINCIPAL = 850
@@ -24,7 +25,7 @@ WIDTH_BOTAO = 100
 # root.geometry(f"{WIDTH_PRINCIPAL}x{HEIGHT_PRINCIPAL}")
 
 root = ctk.CTk()
-root.iconbitmap('icon/shield.ico')  # Definindo o ícone da janela
+root.iconbitmap(ICO_PATH_PRINCIPAL)  # Definindo o ícone da janela
 root.title("Suporte de Mestre - RPG")
 root.geometry(f"{WIDTH_PRINCIPAL}x{HEIGHT_PRINCIPAL}")
 root.configure(fg_color="#D7B377")  # Cor de fundo
